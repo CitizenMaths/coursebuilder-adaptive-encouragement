@@ -1,0 +1,63 @@
+<table class="gcb-student-data-table">
+  <colgroup>
+    <col style="width: 10%">
+    <col>
+  </colgroup>
+
+  <tr>
+    {# I18N: Table header that states when a student enrolled in a course. #}
+    <th align="left">{{ gettext('Date enrolled') }}</th>
+    <td>{{ date_enrolled }}</td>
+  </tr>
+
+  <tr>
+    {# I18N: Table header for the student's email address. This is a noun. #}
+    <th align="left">{{ gettext('Email') }}</th>
+    <td>{{ student.email }}</td>
+  </tr>
+
+  <tr>
+    {# I18N: Table header for the student's name. #}
+    <th align="left">{{ gettext('Name') }}</th>
+    <td>{{ student_name }}</td>
+  </tr>
+
+  <tr>
+    <th align="left">{{ gettext('Click the button to turn encouragement emails on or off') }}</th>
+    <td>
+      <form action='student/aeemail' method='post'>
+        {% if ae_subscribed %}
+          <input type='hidden' name='subscribe' value='false'>
+          <input type='submit' value='Unsubscribe from encouragement emails'>
+        {% else %}
+          <input type='hidden' name='subscribe' value='true'>
+          <input type='submit' value='Subscribe to encouragement emails'>
+        {% endif %}
+      </form>
+    </td>
+  </tr>
+
+  <tr>
+    <th align="left">{{ gettext('Click the button to add or remove your main email address from the email announcement list') }}</th>
+    <td>
+      <form action='student/mailinglist' method='post'>
+        {% if ml_subscribed %}
+          <input type='hidden' name='mlsubscribe' value='false'>
+          <input type='submit' value='Unsubscribe from announcement emails'>
+        {% else %}
+          <input type='hidden' name='mlsubscribe' value='true'>
+          <input type='submit' value='Subscribe to announcement emails'>
+        {% endif %}
+      </form>
+    </td>
+  </tr>
+
+  {% for header, value in extra_student_data %}
+    {% if header or value %}
+      <tr>
+        <th align="left">{{ header }}</th>
+        <td>{{ value }}</td>
+      </tr>
+    {% endif %}
+  {% endfor %}
+</table>
