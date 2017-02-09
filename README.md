@@ -1,6 +1,11 @@
 # coursebuilder-adaptive-encouragement
 Additional functionality based on when users complete certain actions, like completing a rating, or nearly finishing a unit, an email (if the user has consented) will be sent to encourage the user to continue with the course and to provide feedback if applicable.
 
+##Important:
+
+To use the emailing part of this code, you will need a sendgrid account and to have created sendgrid api token which is used to authenticate your account when using the API.
+It is free to set up a sendgrid account at https://sendgrid.com/, and you get 12000 emails for free per month. Anymore than that, and you will have to refer to sendgrids price plan.
+
 ##Modifications to lib directory
 
 -Added python-http-client.zip
