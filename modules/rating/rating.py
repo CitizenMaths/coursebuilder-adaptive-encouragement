@@ -282,7 +282,7 @@ class RatingHandler(utils.BaseRESTHandler):
 
     def get_feedback_ae_email_body(self, name, feedback_count, lesson_key, enrolled_on, has_narrative=False):
         #work out which email body and subject line to return
-        hello = 'Hello {n},<br><br>'.format(n=name)
+        hello = 'Hello {n},<br><br>'.format(n=name.encode('utf-8'))
 
         if has_narrative:
             if feedback_count == 1:

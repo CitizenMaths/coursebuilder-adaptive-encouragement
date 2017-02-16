@@ -759,7 +759,7 @@ class UnitHandler(utils.BaseHandler):
 
     #method to construct the main email body content of the adaptive encouragement email
     def get_ae_email_body(self, name, main_text, unit_id, lesson_id):
-        hello = 'Hello {n},<br><br>'.format(n=name)
+        hello = 'Hello {n},<br><br>'.format(n=name.encode('utf-8'))
 
         regards = """<br><br>Regards,<br>
                      Seb Schmoller<br>
